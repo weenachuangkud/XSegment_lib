@@ -28,9 +28,7 @@
 
 #endif
 
-// ─────────────────────────────────────────
 //  Font Table Includes
-// ─────────────────────────────────────────
 
 #include "XSeg_Font_7.h"
 #include "XSeg_Font_8.h"
