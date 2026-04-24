@@ -35,11 +35,9 @@
 #include "XSeg_Font_14.h"
 #include "XSeg_Font_16.h"
 
-// ─────────────────────────────────────────
 //  Universal Font Lookup
 //  Works for any segment type
 //  Handles digits, letters, special chars
-// ─────────────────────────────────────────
 
 inline uint8_t XSeg_GetFont7(char c) {
     if (c >= '0' && c <= '9')
