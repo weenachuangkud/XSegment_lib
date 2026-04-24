@@ -1,16 +1,12 @@
 #pragma once
 
-// ─────────────────────────────────────────
 //  XSeg_Font.h
 //  Master font include + PROGMEM read macros
 //  Include this file in drivers instead of
 //  individual font files
-// ─────────────────────────────────────────
 
-// ─────────────────────────────────────────
 //  PROGMEM Read Macros
 //  Hides platform differences from drivers
-// ─────────────────────────────────────────
 
 #ifdef __AVR__
     #include <avr/pgmspace.h>
