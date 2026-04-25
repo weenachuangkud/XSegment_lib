@@ -1,0 +1,188 @@
+# ─────────────────────────────────────────
+# XSegment_lib keywords
+# Format: KEYWORD    KEYWORD_TYPE
+# KEYWORD1  = data types, classes
+# KEYWORD2  = methods, functions
+# LITERAL1  = constants, defines
+# ─────────────────────────────────────────
+
+
+# ─────────────────────────────────────────
+# Classes
+# ─────────────────────────────────────────
+
+XSeg_TM1637         KEYWORD1
+XSeg_TM1638         KEYWORD1
+XSeg_MAX7219        KEYWORD1
+XSeg_HT16K33        KEYWORD1
+XSeg_GPIO           KEYWORD1
+XSeg_Base           KEYWORD1
+XSeg_Buffer         KEYWORD1
+XSeg_Math           KEYWORD1
+
+
+# ─────────────────────────────────────────
+# Methods
+# ─────────────────────────────────────────
+
+begin               KEYWORD2
+clear               KEYWORD2
+update              KEYWORD2
+show                KEYWORD2
+scroll              KEYWORD2
+setDigit            KEYWORD2
+setAll              KEYWORD2
+setBrightness       KEYWORD2
+setAlignment        KEYWORD2
+setPadding          KEYWORD2
+setBlink            KEYWORD2
+setScrollSpeed      KEYWORD2
+setScrollDir        KEYWORD2
+enableScroll        KEYWORD2
+setColon            KEYWORD2
+getColon            KEYWORD2
+setLED              KEYWORD2
+setLEDs             KEYWORD2
+clearLEDs           KEYWORD2
+toggleLED           KEYWORD2
+getLEDState         KEYWORD2
+readButtons         KEYWORD2
+isPressed           KEYWORD2
+getButtonChange     KEYWORD2
+getButtonPressed    KEYWORD2
+getButtonReleased   KEYWORD2
+setShutdown         KEYWORD2
+setTestMode         KEYWORD2
+setHardwareBlink2Hz     KEYWORD2
+setHardwareBlink1Hz     KEYWORD2
+setHardwareBlinkHalfHz  KEYWORD2
+setHardwareBlinkOff     KEYWORD2
+powerOn             KEYWORD2
+powerOff            KEYWORD2
+applyPolarity       KEYWORD2
+getNumDigits        KEYWORD2
+getBrightness       KEYWORD2
+getType             KEYWORD2
+getPolarity         KEYWORD2
+getAlignment        KEYWORD2
+getPadding          KEYWORD2
+getBlinkMode        KEYWORD2
+isScrolling         KEYWORD2
+fast10Pow           KEYWORD2
+getDigitAt          KEYWORD2
+countDigits         KEYWORD2
+isNegative          KEYWORD2
+absVal              KEYWORD2
+scaleFloat          KEYWORD2
+clamp               KEYWORD2
+map                 KEYWORD2
+
+
+# ─────────────────────────────────────────
+# Constants / Enums
+# ─────────────────────────────────────────
+
+XSEG_TYPE_7             LITERAL1
+XSEG_TYPE_8             LITERAL1
+XSEG_TYPE_14            LITERAL1
+XSEG_TYPE_16            LITERAL1
+
+XSEG_COMMON_CATHODE     LITERAL1
+XSEG_COMMON_ANODE       LITERAL1
+
+XSEG_ALIGN_RIGHT        LITERAL1
+XSEG_ALIGN_LEFT         LITERAL1
+XSEG_ALIGN_CENTER       LITERAL1
+
+XSEG_PAD_SPACE          LITERAL1
+XSEG_PAD_ZERO           LITERAL1
+
+XSEG_SCROLL_LEFT        LITERAL1
+XSEG_SCROLL_RIGHT       LITERAL1
+
+XSEG_BLINK_OFF          LITERAL1
+XSEG_BLINK_SLOW         LITERAL1
+XSEG_BLINK_MEDIUM       LITERAL1
+XSEG_BLINK_FAST         LITERAL1
+
+XSEG_SEG_A              LITERAL1
+XSEG_SEG_B              LITERAL1
+XSEG_SEG_C              LITERAL1
+XSEG_SEG_D              LITERAL1
+XSEG_SEG_E              LITERAL1
+XSEG_SEG_F              LITERAL1
+XSEG_SEG_G              LITERAL1
+XSEG_SEG_DP             LITERAL1
+XSEG_SEG_H              LITERAL1
+XSEG_SEG_I              LITERAL1
+XSEG_SEG_J              LITERAL1
+XSEG_SEG_K              LITERAL1
+XSEG_SEG_L              LITERAL1
+XSEG_SEG_M              LITERAL1
+XSEG_SEG_N              LITERAL1
+
+XSEG_0                  LITERAL1
+XSEG_1                  LITERAL1
+XSEG_2                  LITERAL1
+XSEG_3                  LITERAL1
+XSEG_4                  LITERAL1
+XSEG_5                  LITERAL1
+XSEG_6                  LITERAL1
+XSEG_7                  LITERAL1
+XSEG_8                  LITERAL1
+XSEG_9                  LITERAL1
+
+XSEG_A                  LITERAL1
+XSEG_B                  LITERAL1
+XSEG_C                  LITERAL1
+XSEG_D                  LITERAL1
+XSEG_E                  LITERAL1
+XSEG_F                  LITERAL1
+XSEG_G                  LITERAL1
+XSEG_H                  LITERAL1
+XSEG_I                  LITERAL1
+XSEG_J                  LITERAL1
+XSEG_K                  LITERAL1
+XSEG_L                  LITERAL1
+XSEG_M                  LITERAL1
+XSEG_N                  LITERAL1
+XSEG_O                  LITERAL1
+XSEG_P                  LITERAL1
+XSEG_Q                  LITERAL1
+XSEG_R                  LITERAL1
+XSEG_S                  LITERAL1
+XSEG_T                  LITERAL1
+XSEG_U                  LITERAL1
+XSEG_V                  LITERAL1
+XSEG_W                  LITERAL1
+XSEG_X                  LITERAL1
+XSEG_Y                  LITERAL1
+XSEG_Z                  LITERAL1
+
+XSEG_SPACE              LITERAL1
+XSEG_MINUS              LITERAL1
+XSEG_DP                 LITERAL1
+XSEG_DEGREE             LITERAL1
+XSEG_UNDERSCORE         LITERAL1
+XSEG_EQUALS             LITERAL1
+XSEG_ALL_ON             LITERAL1
+XSEG_ALL_OFF            LITERAL1
+
+XSEG_BRIGHTNESS_MIN     LITERAL1
+XSEG_BRIGHTNESS_MAX     LITERAL1
+
+XSEGMENT_LIB_VERSION    LITERAL1
+
+TM1638_BTN_1            LITERAL1
+TM1638_BTN_2            LITERAL1
+TM1638_BTN_3            LITERAL1
+TM1638_BTN_4            LITERAL1
+TM1638_BTN_5            LITERAL1
+TM1638_BTN_6            LITERAL1
+TM1638_BTN_7            LITERAL1
+TM1638_BTN_8            LITERAL1
+
+HT16K33_BLINK_OFF       LITERAL1
+HT16K33_BLINK_2HZ       LITERAL1
+HT16K33_BLINK_1HZ       LITERAL1
+HT16K33_BLINK_HALF_HZ   LITERAL1
