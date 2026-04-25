@@ -1,5 +1,5 @@
 ## TM1637
-- Datasheet: https://www.mcielectronics.cl/website_MCI/static/documents/Datasheet_TM1637.pdf
+- Datasheet: https://www.puntoflotante.net/DATASHEET-TM1637.pdf
 - Protocol timing reference: https://github.com/avishorp/TM1637
 
 ## TM1638
