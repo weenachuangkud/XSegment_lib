@@ -3,7 +3,7 @@
 - Protocol timing reference: https://github.com/avishorp/TM1637
 
 ## TM1638
-- Datasheet: https://www.rlocman.ru/i/File/dat/TME/TM1638.pdf
+- Datasheet: https://www.makerhero.com/img/files/download/TM1638-Datasheet.pdf
 - Protocol reference: https://github.com/gavinlyonsrepo/TM1638plus
 
 ---
