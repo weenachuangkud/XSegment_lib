@@ -209,10 +209,10 @@ display.setDigit(0, XSEG_A | XSEG_B | XSEG_C | XSEG_D | XSEG_E | XSEG_F);  // "A
 
 ## Building & Testing
 
-### PlatformIO Tests (tests/)
+### PlatformIO Tests (platformio/)
 
 ```bash
-cd tests
+cd platformio
 
 # Run all tests (uses native by default)
 pio test
