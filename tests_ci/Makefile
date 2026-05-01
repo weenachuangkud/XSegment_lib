@@ -14,11 +14,11 @@ math: test_XSeg_Math
 buffer: test_XSeg_Buffer
 	./test_XSeg_Buffer
 
-test_XSeg_Math: test_XSeg_Math.cpp third_party/unity/unity.c
-	$(CC) $(CXXFLAGS) -o $@ test_XSeg_Math.cpp third_party/unity/unity.c
+test_XSeg_Math: test_XSeg_Math.cpp
+	$(CC) $(CXXFLAGS) -o $@ test_XSeg_Math.cpp
 
-test_XSeg_Buffer: test_XSeg_Buffer.cpp third_party/unity/unity.c
-	$(CC) $(CXXFLAGS) -o $@ test_XSeg_Buffer.cpp third_party/unity/unity.c
+test_XSeg_Buffer: test_XSeg_Buffer.cpp
+	$(CC) $(CXXFLAGS) -o $@ test_XSeg_Buffer.cpp
 
 test: all
 	@echo ""
