@@ -37,24 +37,10 @@ jobs:
       - name: Install g++
         run: sudo apt-get install -y g++
 
-      - name: Build and run Math tests
+      - name: Run all tests via Makefile
         run: |
           cd tests
-          g++ -std=c++11 -Wall -I.. -o test_math test_XSeg_Math.cpp
-          ./test_math
-
-      - name: Build and run Font tests
-        run: |
-          cd tests
-          g++ -std=c++11 -Wall -I.. -o test_font test_XSeg_Font.cpp
-          ./test_font
-
-      - name: Build and run Buffer tests
-        run: |
-          cd tests
-          g++ -std=c++11 -Wall -I.. -o test_buffer test_XSeg_Buffer.cpp
-          ./test_buffer
-
+          make
 
 # ─────────────────────────────────────────
 #  Job 2 — Compile for AVR
