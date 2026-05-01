@@ -6,7 +6,7 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -I../src -I../src/core -I../src/fonts -Ithir
 
 .PHONY: all test clean
 
-all: math buffer
+all: math buffer font
 
 math: test_XSeg_Math
 	./test_XSeg_Math
@@ -14,11 +14,17 @@ math: test_XSeg_Math
 buffer: test_XSeg_Buffer
 	./test_XSeg_Buffer
 
+font: test_XSeg_Font
+	./test_XSeg_Font
+
 test_XSeg_Math: test_XSeg_Math.cpp
 	$(CC) $(CXXFLAGS) -o $@ test_XSeg_Math.cpp
 
 test_XSeg_Buffer: test_XSeg_Buffer.cpp
 	$(CC) $(CXXFLAGS) -o $@ test_XSeg_Buffer.cpp
+
+test_XSeg_Font: test_XSeg_Font.cpp
+	$(CC) $(CXXFLAGS) -o $@ test_XSeg_Font.cpp
 
 test: all
 	@echo ""
@@ -27,7 +33,7 @@ test: all
 	@echo "================================"
 
 clean:
-	rm -f test_XSeg_Math test_XSeg_Buffer
+	rm -f test_XSeg_Math test_XSeg_Buffer test_XSeg_Font
 
 help:
 	@echo "Available targets:"
