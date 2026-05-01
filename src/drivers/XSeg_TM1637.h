@@ -114,7 +114,7 @@ public:
 
     void show(double n, uint8_t decimals) override {
         _scrollEnabled = false;
-        _buffer.writeFloat((float)n, decimals, _align, _padding);
+        _buffer.writeFloat((float)n, decimals, _align);
     }
 
     void show(const char* str) override {

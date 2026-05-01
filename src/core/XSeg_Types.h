@@ -79,6 +79,10 @@ enum XSeg_Blink : uint8_t {
 // ─────────────────────────────────────────
 
 struct XSeg_Config {
+    XSeg_Config() {}
+    XSeg_Config(XSeg_Type t, XSeg_Polarity p, XSeg_Align a, XSeg_Padding pad, uint8_t d, uint8_t b)
+        : type(t), polarity(p), align(a), padding(pad), digits(d), brightness(b) {}
+
     XSeg_Type     type      = XSEG_TYPE_7;
     XSeg_Polarity polarity  = XSEG_COMMON_CATHODE;
     XSeg_Align    align     = XSEG_ALIGN_RIGHT;

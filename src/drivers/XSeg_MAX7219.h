@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include <Arduino.h>
 #include "../core/XSeg_Types.h"
 #include "../core/XSeg_Math.h"
 #include "../core/XSeg_Base.h"
@@ -162,12 +163,12 @@ public:
 
     void show(float n, uint8_t decimals) override {
         _scrollEnabled = false;
-        _buffer.writeFloat(n, decimals, _align, _padding);
+        _buffer.writeFloat(n, decimals, _align);
     }
 
     void show(double n, uint8_t decimals) override {
         _scrollEnabled = false;
-        _buffer.writeFloat((float)n, decimals, _align, _padding);
+        _buffer.writeFloat((float)n, decimals, _align);
     }
 
     void show(const char* str) override {
