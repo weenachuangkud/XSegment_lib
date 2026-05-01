@@ -217,17 +217,19 @@ cd tests
 # Run unit tests with PlatformIO (native - no hardware needed)
 pio test -e native
 
-# Run tests on ESP32 (requires hardware)
+# Run tests on ESP32 (requires hardware connected)
 pio test -e esp32
 
-# Run tests on Arduino Uno (requires hardware)
+# Run tests on Arduino Uno (requires hardware connected)
 pio test -e uno
 ```
 
-The test environment uses:
-- `native` - Runs tests on host machine (no hardware required)
-- `esp32` - Runs tests on ESP32 hardware
-- `uno` - Runs tests on Arduino Uno hardware
+**Test environments:**
+- `native` - Runs tests on host machine (no hardware required) ✓
+- `esp32` - Runs tests on ESP32 hardware (requires hardware)
+- `uno` - Runs tests on Arduino Uno hardware (requires hardware)
+
+> **Note:** The `esp32` and `uno` environments require actual hardware to be connected and accessible for upload/testing. The `native` environment is sufficient for most development testing.
 
 Test file: `tests/test/test_main.cpp`
 
