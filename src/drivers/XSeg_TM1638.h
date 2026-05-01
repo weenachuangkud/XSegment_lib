@@ -60,7 +60,7 @@ public:
     // ─────────────────────────────────────
 
     XSeg_TM1638(uint8_t clk, uint8_t dio, uint8_t stb)
-        : XSeg_Base({
+        : XSeg_Base(XSeg_Config{
             XSEG_TYPE_8,
             XSEG_COMMON_CATHODE,
             XSEG_ALIGN_RIGHT,
@@ -151,12 +151,12 @@ public:
 
     void show(float n, uint8_t decimals) override {
         _scrollEnabled = false;
-        _buffer.writeFloat(n, decimals, _align, _padding);
+        _buffer.writeFloat(n, decimals, _align);
     }
 
     void show(double n, uint8_t decimals) override {
         _scrollEnabled = false;
-        _buffer.writeFloat((float)n, decimals, _align, _padding);
+        _buffer.writeFloat((float)n, decimals, _align);
     }
 
     void show(const char* str) override {

@@ -28,7 +28,7 @@ public:
     // ─────────────────────────────────────
 
     XSeg_TM1637(uint8_t clk, uint8_t dio, uint8_t digits = 4)
-        : XSeg_Base({
+        : XSeg_Base(XSeg_Config{
             XSEG_TYPE_8,            // TM1637 is 8 seg (7 + dp)
             XSEG_COMMON_CATHODE,    // TM1637 fixed cathode
             XSEG_ALIGN_RIGHT,
@@ -109,7 +109,7 @@ public:
 
     void show(float n, uint8_t decimals) override {
         _scrollEnabled = false;
-        _buffer.writeFloat(n, decimals, _align, _padding);
+        _buffer.writeFloat(n, decimals, _align);
     }
 
     void show(double n, uint8_t decimals) override {
