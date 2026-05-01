@@ -2,7 +2,7 @@
 # Usage: make test (or just make)
 
 CC = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -I../src -I../src/core -I../src/fonts -Ithird_party/unity
+CXXFLAGS = -std=c++17 -Wall -Wextra -I../src -I../src/core -I../src/fonts
 
 .PHONY: all test clean
 
