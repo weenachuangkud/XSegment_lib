@@ -209,7 +209,7 @@ display.setDigit(0, XSEG_A | XSEG_B | XSEG_C | XSEG_D | XSEG_E | XSEG_F);  // "A
 
 ## Building & Testing
 
-### PlatformIO Tests
+### PlatformIO Tests (tests/)
 
 ```bash
 cd tests
@@ -229,9 +229,14 @@ pio test -e uno
 - `esp32` - Runs tests on ESP32 hardware (requires hardware)
 - `uno` - Runs tests on Arduino Uno hardware (requires hardware)
 
-> **Note:** The `esp32` and `uno` environments require actual hardware to be connected and accessible for upload/testing. The `native` environment is sufficient for most development testing.
+### Makefile Tests (tests_ci/)
 
-Test file: `tests/test/test_main.cpp`
+```bash
+cd tests_ci
+make test
+```
+
+Runs 26 tests: Math (8), Buffer (12), Font (6)
 
 ### Build for Different Platforms
 
