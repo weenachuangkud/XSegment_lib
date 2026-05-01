@@ -217,15 +217,3 @@ make
 # Build for Arduino
 arduino-cli compile --fqbn arduino:avr:uno examples/TM1637/Basic/Basic.ino
 ```
-
----
-
-## License
-
-MIT License
-
----
-
-## Contributing
-
-Pull requests welcome!
