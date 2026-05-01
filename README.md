@@ -224,11 +224,6 @@ pio test -e uno       # Arduino Uno hardware
 
 # List available tests
 pio test --list-tests
-
-# Verbose output
-pio test -v           # Show test names
-pio test -vv          # Show more detail
-pio test -vvv         # Show all output
 ```
 
 **Test environments:**
