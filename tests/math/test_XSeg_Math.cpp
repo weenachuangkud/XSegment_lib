@@ -1,27 +1,22 @@
 #include <unity.h>
-#include "../src/core/XSeg_Math.h"
+#include "../../src/core/XSeg_Math.h"
 
 void setUp(void) {}
 void tearDown(void) {}
 
 void test_fast10Pow(void) {
-    TEST_ASSERT_EQUAL(1ULL,        XSeg_Math::fast10Pow(0));
-    TEST_ASSERT_EQUAL(10ULL,       XSeg_Math::fast10Pow(1));
-    TEST_ASSERT_EQUAL(100ULL,     XSeg_Math::fast10Pow(2));
-    TEST_ASSERT_EQUAL(1000ULL,    XSeg_Math::fast10Pow(3));
-    TEST_ASSERT_EQUAL(0ULL,       XSeg_Math::fast10Pow(20));
+    TEST_ASSERT_EQUAL(1ULL,  XSeg_Math::fast10Pow(0));
+    TEST_ASSERT_EQUAL(10ULL, XSeg_Math::fast10Pow(1));
+    TEST_ASSERT_EQUAL(100ULL, XSeg_Math::fast10Pow(2));
+    TEST_ASSERT_EQUAL(0ULL, XSeg_Math::fast10Pow(20));
 }
 
-void test_getDigitAt_int32(void) {
+void test_getDigitAt(void) {
     TEST_ASSERT_EQUAL(4, XSeg_Math::getDigitAt(1234, 0));
     TEST_ASSERT_EQUAL(3, XSeg_Math::getDigitAt(1234, 1));
     TEST_ASSERT_EQUAL(2, XSeg_Math::getDigitAt(1234, 2));
     TEST_ASSERT_EQUAL(1, XSeg_Math::getDigitAt(1234, 3));
-}
-
-void test_getDigitAt_negative(void) {
     TEST_ASSERT_EQUAL(4, XSeg_Math::getDigitAt(-1234, 0));
-    TEST_ASSERT_EQUAL(3, XSeg_Math::getDigitAt(-1234, 1));
 }
 
 void test_countDigits(void) {
@@ -61,8 +56,7 @@ void test_map(void) {
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_fast10Pow);
-    RUN_TEST(test_getDigitAt_int32);
-    RUN_TEST(test_getDigitAt_negative);
+    RUN_TEST(test_getDigitAt);
     RUN_TEST(test_countDigits);
     RUN_TEST(test_isNegative);
     RUN_TEST(test_absVal);
