@@ -73,7 +73,7 @@ static const uint8_t XSEG_FONT_ATTR XSeg_Font7_Special[] = {
     0b00000000,  // ' ' space
     0b01000000,  // '-' minus
     0b10000000,  // '.' decimal point
-    0b01100011,  // '°' degree
+   // 0b01100011,  // '°' degree
     0b00111001,  // '[' 
     0b00001111,  // ']'
     0b01110110,  // 'H' for hex
