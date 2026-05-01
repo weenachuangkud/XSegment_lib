@@ -237,7 +237,8 @@ pio test --list-tests
 
 ```bash
 cd tests_ci
-make test
+make test  # Run tests
+make clean # Clear all binaries
 ```
 
 Runs 26 tests: Math (8), Buffer (12), Font (6)
