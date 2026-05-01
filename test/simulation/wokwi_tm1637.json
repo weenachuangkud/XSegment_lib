@@ -1,0 +1,19 @@
+{
+  "name": "TM1637 Driver Simulation",
+  "version": "1.0.0",
+  "board": "arduino-uno",
+  "diy": {
+    "parts": [
+      {
+        "id": "display",
+        "type": "tm1637",
+        "clockPin": 2,
+        "dataPin": 3,
+        "digits": 4
+      }
+    ]
+  },
+  "code": {
+    "text": "#include <XSegment_lib.h>\n\nXSeg_TM1637 display(2, 3);\n\nvoid setup() {\n  Serial.begin(115200);\n  display.begin();\n  display.setBrightness(7);\n  \n  // Demo sequence\n  Serial.println(\"=== TM1637 Demo ===\");\n}\n\nvoid loop() {\n  // Integer test\n  static int counter = 0;\n  display.show(counter);\n  Serial.print(\"Display: \"); Serial.println(counter);\n  counter = (counter + 1) % 10000;\n  \n  delay(500);\n  \n  // Switch to string\n  display.show(\"HELP\");\n  Serial.println(\"Display: HELP\");\n  delay(500);\n  \n  // Float\n  display.show(3.141f, 2);\n  Serial.println(\"Display: 3.14\");\n  delay(500);\n}\n"
+  }
+}

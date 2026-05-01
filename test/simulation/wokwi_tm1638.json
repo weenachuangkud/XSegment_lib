@@ -1,0 +1,20 @@
+{
+  "name": "TM1638 Driver Simulation",
+  "version": "1.0.0",
+  "board": "arduino-uno",
+  "diy": {
+    "parts": [
+      {
+        "id": "display",
+        "type": "tm1638",
+        "clockPin": 2,
+        "dataPin": 3,
+        "strobePin": 4,
+        "digits": 8
+      }
+    ]
+  },
+  "code": {
+    "text": "#include <XSegment_lib.h>\n\nXSeg_TM1638 display(2, 3, 4);\n\nvoid setup() {\n  Serial.begin(115200);\n  display.begin();\n  display.setBrightness(7);\n  \n  Serial.println(\"=== TM1638 Demo ===\");\n}\n\nvoid loop() {\n  static int counter = 0;\n  \n  // Show 8-digit integer\n  display.show(counter);\n  Serial.print(\"Display: \"); Serial.println(counter);\n  counter = (counter + 1) % 100000000;\n  delay(200);\n  \n  // String display\n  display.show(\"ARDUINO\");\n  Serial.println(\"Display: ARDUINO\");\n  delay(500);\n  \n  // Scroll test\n  display.scroll(\"SCROLLING TEXT DEMO\", 100);\n  Serial.println(\"Scrolling...\");\n  delay(1000);\n}\n"
+  }
+}

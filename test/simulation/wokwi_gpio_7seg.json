@@ -1,0 +1,19 @@
+{
+  "name": "GPIO 7-Segment Driver Simulation",
+  "version": "1.0.0",
+  "board": "arduino-uno",
+  "diy": {
+    "parts": [
+      {
+        "id": "display",
+        "type": "7segment-direct",
+        "dataPins": [2,3,4,5,6,7,8],
+        "digitPins": [9,10,11,12],
+        "numDigits": 4
+      }
+    ]
+  },
+  "code": {
+    "text": "#include <XSegment_lib.h>\n\n// Data pins (A-G), digit select pins\nXSeg_GPIO display({2,3,4,5,6,7,8}, {9,10,11,12});\n\nvoid setup() {\n  Serial.begin(115200);\n  display.begin();\n  \n  Serial.println(\"=== GPIO 7-Segment Demo ===\");\n}\n\nvoid loop() {\n  static int counter = 0;\n  \n  display.show(counter);\n  Serial.print(\"Display: \"); Serial.println(counter);\n  counter = (counter + 1) % 10000;\n  delay(500);\n  \n  display.show(\"TEST\");\n  Serial.println(\"Display: TEST\");\n  delay(500);\n  \n  display.show(-987);\n  Serial.println(\"Display: -987\");\n  delay(500);\n  \n  display.show(7.77f, 2);\n  Serial.println(\"Display: 7.77\");\n  delay(500);\n  \n  display.clear();\n  delay(200);\n}\n"
+  }
+}
