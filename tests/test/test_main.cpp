@@ -1,5 +1,10 @@
 #include <unity.h>
-#include <XSegment_lib.h>
+
+// Include core library headers directly (avoid Arduino deps)
+#include "../../src/core/XSeg_Types.h"
+#include "../../src/core/XSeg_Math.h"
+#include "../../src/core/XSeg_Buffer.h"
+#include "../../src/fonts/XSeg_Font.h"
 
 void setUp(void) {}
 void tearDown(void) {}
