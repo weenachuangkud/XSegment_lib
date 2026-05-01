@@ -209,31 +209,27 @@ display.setDigit(0, XSEG_A | XSEG_B | XSEG_C | XSEG_D | XSEG_E | XSEG_F);  // "A
 
 ## Building & Testing
 
-### Local Tests (Make)
-
-```bash
-# Run unit tests with Make
-cd tests_ci
-make test
-
-# Run specific test groups
-make math      # Math utilities tests
-make buffer    # Buffer tests
-make clean    # Clean compiled binaries
-```
-
 ### PlatformIO Tests
 
 ```bash
-# Run unit tests with PlatformIO (native)
+cd tests
+
+# Run unit tests with PlatformIO (native - no hardware needed)
 pio test -e native
 
-# Run on ESP32
+# Run tests on ESP32 (requires hardware)
 pio test -e esp32
 
-# Run on Arduino Uno
+# Run tests on Arduino Uno (requires hardware)
 pio test -e uno
 ```
+
+The test environment uses:
+- `native` - Runs tests on host machine (no hardware required)
+- `esp32` - Runs tests on ESP32 hardware
+- `uno` - Runs tests on Arduino Uno hardware
+
+Test file: `tests/test/test_main.cpp`
 
 ### Build for Different Platforms
 
