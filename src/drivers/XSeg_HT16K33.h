@@ -1,6 +1,9 @@
 #pragma once
 #include <stdint.h>
 #include <Arduino.h>
+#if defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_SAMD) || defined(ESP32) || defined(ESP8266)
+    #include <Wire.h>
+#endif
 #include "../core/XSeg_Types.h"
 #include "../core/XSeg_Math.h"
 #include "../core/XSeg_Base.h"
