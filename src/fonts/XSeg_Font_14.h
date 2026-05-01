@@ -73,6 +73,6 @@ static const uint16_t XSEG_FONT_ATTR XSeg_Font14_Special[] = {
     0b00000000000000000,  // ' ' space
     0b00000000001000000,  // '-' minus
     0b00000000010000000,  // '.' decimal point
-    0b00000000001100011,  // '°' degree
+   // 0b00000000001100011,  // '°' degree
     0b00000000000000000,  // unknown → blank
 };
