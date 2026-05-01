@@ -2,7 +2,7 @@
 # Usage: make test (or just make)
 
 CC = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -I../src -I../src/core -I../src/fonts -Isrc
+CXXFLAGS = -std=c++17 -Wall -Wextra -I../src -I../src/core -I../src/fonts -Ithird_party/unity
 
 .PHONY: all test clean
 
@@ -14,11 +14,11 @@ math: test_XSeg_Math
 buffer: test_XSeg_Buffer
 	./test_XSeg_Buffer
 
-test_XSeg_Math: math/test_XSeg_Math.cpp src/fonts/XSeg_Font.c src/unity.c
-	$(CC) $(CXXFLAGS) -o $@ math/test_XSeg_Math.cpp src/fonts/XSeg_Font.c src/unity.c
+test_XSeg_Math: math/test_XSeg_Math.cpp src/fonts/XSeg_Font.c third_party/unity/unity.c
+	$(CC) $(CXXFLAGS) -o $@ math/test_XSeg_Math.cpp src/fonts/XSeg_Font.c third_party/unity/unity.c
 
-test_XSeg_Buffer: buffer/test_XSeg_Buffer.cpp src/fonts/XSeg_Font.c src/unity.c
-	$(CC) $(CXXFLAGS) -o $@ buffer/test_XSeg_Buffer.cpp src/fonts/XSeg_Font.c src/unity.c
+test_XSeg_Buffer: buffer/test_XSeg_Buffer.cpp src/fonts/XSeg_Font.c third_party/unity/unity.c
+	$(CC) $(CXXFLAGS) -o $@ buffer/test_XSeg_Buffer.cpp src/fonts/XSeg_Font.c third_party/unity/unity.c
 
 test: all
 	@echo ""
