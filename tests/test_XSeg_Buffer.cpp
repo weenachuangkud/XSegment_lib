@@ -57,7 +57,7 @@ void test_buffer_writeInt_center() {
 
 void test_buffer_writeInt_negative() {
     XSeg_Buffer buf(4, XSEG_TYPE_7);
-    buf.writeInt((int32_t)-123, XSEG_ALIGN_RIGHT, XSEG_PAD_SPACE);
+    buf.writeInt((int32_t)-123, XSEG_ALIGN_RIGHT);
 
     // -123 → [-, 1, 2, 3]
     assert(buf.getDigit(0) == XSEG_MINUS);
