@@ -214,20 +214,29 @@ display.setDigit(0, XSEG_A | XSEG_B | XSEG_C | XSEG_D | XSEG_E | XSEG_F);  // "A
 ```bash
 cd tests
 
-# Run unit tests with PlatformIO (native - no hardware needed)
-pio test -e native
+# Run all tests (uses native by default)
+pio test
 
-# Run tests on ESP32 (requires hardware connected)
-pio test -e esp32
+# Run on specific environment
+pio test -e native    # Host machine (no hardware) ✓
+pio test -e esp32     # ESP32 hardware
+pio test -e uno       # Arduino Uno hardware
 
-# Run tests on Arduino Uno (requires hardware connected)
-pio test -e uno
+# List available tests
+pio test --list-tests
+
+# Verbose output
+pio test -v           # Show test names
+pio test -vv          # Show more detail
+pio test -vvv         # Show all output
 ```
 
 **Test environments:**
 - `native` - Runs tests on host machine (no hardware required) ✓
 - `esp32` - Runs tests on ESP32 hardware (requires hardware)
 - `uno` - Runs tests on Arduino Uno hardware (requires hardware)
+
+> **Note:** Install PlatformIO with `pip install platformio` or via VSCode extension.
 
 ### Makefile Tests (tests_ci/)
 
