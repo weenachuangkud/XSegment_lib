@@ -1,16 +1,5 @@
-# ─────────────────────────────────────────
-#  XSegment_lib Unit Tests
-#  Run on desktop — no hardware needed
-#  Usage:
-#    make        — build and run all
-#    make math   — run math tests only
-#    make font   — run font tests only
-#    make buffer — run buffer tests only
-#    make clean  — remove build files
-# ─────────────────────────────────────────
-
 CXX      = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra -I..
+CXXFLAGS = -std=c++11 -Wall -Wextra -I.. -I./stubs
 
 all: math font buffer
 	@echo ""
