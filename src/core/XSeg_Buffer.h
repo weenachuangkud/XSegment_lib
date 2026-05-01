@@ -70,7 +70,7 @@ public:
         // write digits right to left
         for (uint8_t i = 0; i < digitCount; i++) {
             uint8_t pos  = startPos + digitCount - 1 - i;
-            uint8_t d    = XSeg_Math::getNumberInInt(val, i);
+            uint8_t d    = XSeg_Math::getDigitAt(val, i);
             _buffer[pos] = _getDigitMask(d);
         }
 
@@ -104,7 +104,7 @@ public:
 
         for (uint8_t i = 0; i < digitCount; i++) {
             uint8_t pos  = startPos + digitCount - 1 - i;
-            uint8_t d    = XSeg_Math::getNumberInInt(val, i);
+            uint8_t d    = XSeg_Math::getDigitAt(val, i);
             _buffer[pos] = _getDigitMask(d);
         }
 
@@ -149,7 +149,7 @@ public:
         // write all digits
         for (uint8_t i = 0; i < digitCount; i++) {
             uint8_t pos  = startPos + digitCount - 1 - i;
-            uint8_t d    = XSeg_Math::getNumberInInt(scaled, i);
+            uint8_t d    = XSeg_Math::getDigitAt(scaled, i);
             _buffer[pos] = _getDigitMask(d);
 
             // place decimal point
