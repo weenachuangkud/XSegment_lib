@@ -53,7 +53,7 @@ inline uint8_t XSeg_GetFont7(char c) {
         case '.': return XSEG_DP;
         case '_': return XSEG_UNDERSCORE;
         case '=': return XSEG_EQUALS;
-        case '°': return XSEG_DEGREE;
+       // case '°': return XSEG_DEGREE;
         default:  return XSEG_SPACE; // unknown → blank
     }
 }
@@ -73,7 +73,7 @@ inline uint8_t XSeg_GetFont8(char c, bool dp = false) {
         case '-': return XSEG_MINUS;
         case '.': return XSEG_DP;
         case '_': return XSEG_UNDERSCORE;
-        case '°': return XSEG_DEGREE;
+       // case '°': return XSEG_DEGREE;
         default:  return XSEG_SPACE;
     }
 }
@@ -90,7 +90,7 @@ inline uint16_t XSeg_GetFont14(char c) {
         case '-': return XSEG_MINUS;
         case '.': return XSEG_DP;
         case '_': return XSEG_UNDERSCORE;
-        case '°': return XSEG_DEGREE;
+    //  case '°': return XSEG_DEGREE;
         default:  return XSEG_SPACE;
     }
 }
@@ -107,7 +107,7 @@ inline uint16_t XSeg_GetFont16(char c) {
         case '-': return XSEG_MINUS;
         case '.': return XSEG_DP;
         case '_': return XSEG_UNDERSCORE;
-        case '°': return XSEG_DEGREE;
+       // case '°': return XSEG_DEGREE;
         default:  return XSEG_SPACE;
     }
 }
