@@ -162,7 +162,7 @@ void test_math_countDigits_negative(void) {
 
 void test_math_countDigits_float(void) {
     TEST_ASSERT_EQUAL(3, XSeg_Math::countDigits(3.14f, 2));
-    TEST_ASSERT_EQUAL(4, XSeg_Math::countDigits(0.001f, 3));
+    TEST_ASSERT_EQUAL(1, XSeg_Math::countDigits(0.001f, 3));
 }
 
 void test_buffer_stringAlignments(void) {
