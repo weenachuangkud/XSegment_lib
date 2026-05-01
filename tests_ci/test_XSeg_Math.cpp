@@ -82,19 +82,19 @@ void test_scaleFloat() {
 }
 
 void test_clamp() {
-    assert(XSeg_Math::clamp((uint8_t)5,  0,  7)  == 5);
-    assert(XSeg_Math::clamp((uint8_t)0,  0,  7)  == 0);
-    assert(XSeg_Math::clamp((uint8_t)7,  0,  7)  == 7);
-    assert(XSeg_Math::clamp((uint8_t)10, 0,  7)  == 7);   // clamp high
-    assert(XSeg_Math::clamp((uint8_t)0,  3,  7)  == 3);   // clamp low
+    assert(XSeg_Math::clamp((int32_t)5,  (int32_t)0,  (int32_t)7)  == 5);
+    assert(XSeg_Math::clamp((int32_t)0,  (int32_t)0,  (int32_t)7)  == 0);
+    assert(XSeg_Math::clamp((int32_t)7,  (int32_t)0,  (int32_t)7)  == 7);
+    assert(XSeg_Math::clamp((int32_t)10, (int32_t)0,  (int32_t)7)  == 7);
+    assert(XSeg_Math::clamp((int32_t)0,  (int32_t)3,  (int32_t)7)  == 3);
     printf("  clamp             PASS\n");
 }
 
 void test_map() {
-    assert(XSeg_Math::map(5,   0, 10,  0, 100) == 50);
-    assert(XSeg_Math::map(0,   0, 10,  0, 255) == 0);
-    assert(XSeg_Math::map(10,  0, 10,  0, 255) == 255);
-    assert(XSeg_Math::map(5,   0, 10,  0, 15)  == 7);
+    assert(XSeg_Math::map((int32_t)5,   (int32_t)0, (int32_t)10, (int32_t)0, (int32_t)100) == 50);
+    assert(XSeg_Math::map((int32_t)0,   (int32_t)0, (int32_t)10, (int32_t)0, (int32_t)255) == 0);
+    assert(XSeg_Math::map((int32_t)10,  (int32_t)0, (int32_t)10, (int32_t)0, (int32_t)255) == 255);
+    assert(XSeg_Math::map((int32_t)5,   (int32_t)0, (int32_t)10, (int32_t)0, (int32_t)15)  == 7);
     printf("  map               PASS\n");
 }
 

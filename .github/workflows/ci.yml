@@ -23,10 +23,10 @@ jobs:
       - name: Install g++
         run: sudo apt-get install -y g++
 
-      - name: Run all tests via Makefile
+      - name: Run unit tests via Makefile
         run: |
-          cd tests
-          make
+          cd tests_ci
+          make test
 
 
 # ─────────────────────────────────────────

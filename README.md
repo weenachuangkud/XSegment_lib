@@ -209,11 +209,39 @@ display.setDigit(0, XSEG_A | XSEG_B | XSEG_C | XSEG_D | XSEG_E | XSEG_F);  // "A
 
 ## Building & Testing
 
+### PlatformIO Tests (platformio/)
+
 ```bash
-# Run unit tests
-cd tests
-make
+cd platformio
+
+# Run all tests (uses native by default)
+pio test
+
+# Run on specific environment
+pio test -e native    # Host machine (no hardware) ✓
+pio test -e esp32     # ESP32 hardware
+pio test -e uno       # Arduino Uno hardware
+
+# List available tests
+pio test --list-tests
 ```
+
+**Test environments:**
+- `native` - Runs tests on host machine (no hardware required) ✓
+- `esp32` - Runs tests on ESP32 hardware (requires hardware)
+- `uno` - Runs tests on Arduino Uno hardware (requires hardware)
+
+> **Note:** Install PlatformIO with `pip install platformio` or via VSCode extension.
+
+### Makefile Tests (tests_ci/)
+
+```bash
+cd tests_ci
+make test  # Run tests
+make clean # Clear all binaries
+```
+
+Runs 26 tests: Math (8), Buffer (12), Font (6)
 
 ### Build for Different Platforms
 
@@ -230,3 +258,13 @@ arduino-cli compile --fqbn STM32:stm32:GenF1 examples/TM1637/Basic/Basic.ino
 # Raspberry Pi Pico (RP2040)
 arduino-cli compile --fqbn rp2040:rp2040:rpipico examples/TM1637/Basic/Basic.ino
 ```
+
+### Visual Simulation (Wokwi)
+
+Open the JSON files in `tests/simulation/` at [Wokwi.com](https://wokwi.com):
+- `wokwi_tm1637.json` - TM1637 driver
+- `wokwi_tm1638.json` - TM1638 driver
+- `wokwi_max7219.json` - MAX7219 driver
+- `wokwi_ht16k33.json` - HT16K33 driver
+- `wokwi_gpio_7seg.json` - GPIO 7-segment
+- `wokwi_gpio_14seg.json` - GPIO 14-segment
