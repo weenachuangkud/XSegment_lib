@@ -57,7 +57,7 @@ void test_buffer_writeInt_center() {
 
 void test_buffer_writeInt_negative() {
     XSeg_Buffer buf(4, XSEG_TYPE_7);
-    buf.writeInt((int32_t)-123, XSEG_ALIGN_RIGHT);
+    buf.writeInt((int32_t)-123, XSEG_ALIGN_RIGHT, XSEG_PAD_SPACE);
 
     // -123 → [-, 1, 2, 3]
     assert(buf.getDigit(0) == XSEG_MINUS);
@@ -81,7 +81,7 @@ void test_buffer_writeInt_leading_zeros() {
 
 void test_buffer_writeFloat() {
     XSeg_Buffer buf(4, XSEG_TYPE_8);
-    buf.writeFloat(3.14f, 2, XSEG_ALIGN_RIGHT, XSEG_PAD_SPACE);
+    buf.writeFloat(3.14f, 2, XSEG_ALIGN_RIGHT);
 
     // 3.14 → [3., 1, 4, blank] or [blank, 3., 1, 4]
     // decimal point should be set on digit with 3
