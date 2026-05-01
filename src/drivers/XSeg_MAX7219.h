@@ -60,7 +60,7 @@ public:
                  uint8_t chains  = 1,
                  int8_t  clk     = -1,
                  int8_t  din     = -1)
-        : XSeg_Base({
+        : XSeg_Base(XSeg_Config{
             XSEG_TYPE_8,
             XSEG_COMMON_CATHODE,
             XSEG_ALIGN_RIGHT,
