@@ -327,12 +327,16 @@ private:
 
     void _initI2C() {
         #if defined(ARDUINO)
-            if (_sda != -1 && _scl != -1) {
-                Wire.begin(_sda, _scl);     // custom pins (ESP32)
-            } else {
-                Wire.begin();               // default pins
-            }
-            Wire.setClock(400000);          // 400kHz fast mode
+            #if defined(ESP32) || defined(ESP8266)
+                if (_sda != -1 && _scl != -1) {
+                    Wire.begin(_sda, _scl);
+                } else {
+                    Wire.begin();
+                }
+            #else
+                Wire.begin();
+            #endif
+            Wire.setClock(400000);
         #endif
     }
 

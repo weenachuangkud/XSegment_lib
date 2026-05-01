@@ -343,9 +343,7 @@ private:
     void _initHardwareSPI() {
         #if defined(ARDUINO)
             SPI.begin();
-            SPI.setDataMode(SPI_MODE0);
-            SPI.setBitOrder(MSBFIRST);
-            SPI.setClockDivider(SPI_CLOCK_DIV16);
+            SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));
         #endif
     }
 
