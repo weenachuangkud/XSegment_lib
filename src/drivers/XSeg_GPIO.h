@@ -140,6 +140,10 @@ public:
     //  Show
     // ─────────────────────────────────────
 
+    void show(int n) override {
+        show((int32_t)n);
+    }
+
     void show(int32_t n) override {
         _scrollEnabled = false;
         _buffer.writeInt(n, _align, _padding);
