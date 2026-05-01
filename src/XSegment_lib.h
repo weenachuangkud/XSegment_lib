@@ -1,9 +1,5 @@
 #pragma once
 
-#if __cplusplus < 201103L
-  #error "XSegment_lib requires C++11 or newer"
-#endif
-
 // ─────────────────────────────────────────
 //  XSegment_lib.h
 //  Master include — add this to your sketch
