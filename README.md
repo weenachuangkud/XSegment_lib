@@ -209,10 +209,30 @@ display.setDigit(0, XSEG_A | XSEG_B | XSEG_C | XSEG_D | XSEG_E | XSEG_F);  // "A
 
 ## Building & Testing
 
+### Local Tests (Make)
+
 ```bash
-# Run unit tests
-cd tests
-make
+# Run unit tests with Make
+cd tests_ci
+make test
+
+# Run specific test groups
+make math      # Math utilities tests
+make buffer    # Buffer tests
+make clean    # Clean compiled binaries
+```
+
+### PlatformIO Tests
+
+```bash
+# Run unit tests with PlatformIO (native)
+pio test -e native
+
+# Run on ESP32
+pio test -e esp32
+
+# Run on Arduino Uno
+pio test -e uno
 ```
 
 ### Build for Different Platforms
@@ -230,3 +250,13 @@ arduino-cli compile --fqbn STM32:stm32:GenF1 examples/TM1637/Basic/Basic.ino
 # Raspberry Pi Pico (RP2040)
 arduino-cli compile --fqbn rp2040:rp2040:rpipico examples/TM1637/Basic/Basic.ino
 ```
+
+### Visual Simulation (Wokwi)
+
+Open the JSON files in `tests/simulation/` at [Wokwi.com](https://wokwi.com):
+- `wokwi_tm1637.json` - TM1637 driver
+- `wokwi_tm1638.json` - TM1638 driver
+- `wokwi_max7219.json` - MAX7219 driver
+- `wokwi_ht16k33.json` - HT16K33 driver
+- `wokwi_gpio_7seg.json` - GPIO 7-segment
+- `wokwi_gpio_14seg.json` - GPIO 14-segment

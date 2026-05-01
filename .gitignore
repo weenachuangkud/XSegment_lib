@@ -7,6 +7,8 @@
 /tests/test_XSeg_Math
 /tests/test_XSeg_Font
 /tests/test_XSeg_Buffer
+/tests_ci/test_XSeg_Math
+/tests_ci/test_XSeg_Buffer
 *.o
 *.obj
 *.exe
