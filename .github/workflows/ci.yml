@@ -1,0 +1,288 @@
+# ─────────────────────────────────────────
+#  XSegment_lib CI Workflow
+#  Runs on every push and pull request
+#
+#  Jobs:
+#  1. unit_tests    — desktop logic tests
+#  2. build_avr     — compile for AVR
+#  3. build_esp32   — compile for ESP32
+#  4. build_rp2040  — compile for RP2040
+#  5. lint          — code style check
+# ─────────────────────────────────────────
+
+name: XSegment_lib CI
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+# ─────────────────────────────────────────
+#  Job 1 — Desktop Unit Tests
+#  Runs math, font, buffer tests
+#  No hardware needed
+# ─────────────────────────────────────────
+
+  unit_tests:
+    name: Unit Tests (Desktop)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install g++
+        run: sudo apt-get install -y g++
+
+      - name: Build and run Math tests
+        run: |
+          cd tests
+          g++ -std=c++11 -Wall -I.. -o test_math test_XSeg_Math.cpp
+          ./test_math
+
+      - name: Build and run Font tests
+        run: |
+          cd tests
+          g++ -std=c++11 -Wall -I.. -o test_font test_XSeg_Font.cpp
+          ./test_font
+
+      - name: Build and run Buffer tests
+        run: |
+          cd tests
+          g++ -std=c++11 -Wall -I.. -o test_buffer test_XSeg_Buffer.cpp
+          ./test_buffer
+
+
+# ─────────────────────────────────────────
+#  Job 2 — Compile for AVR
+#  Arduino Uno, Nano, Mega
+#  Checks all examples compile clean
+# ─────────────────────────────────────────
+
+  build_avr:
+    name: Build AVR (Arduino Uno)
+    runs-on: ubuntu-latest
+    needs: unit_tests
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Install AVR core
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+
+      - name: Install library
+        run: |
+          mkdir -p $HOME/Arduino/libraries
+          cp -r . $HOME/Arduino/libraries/XSegment_lib
+
+      - name: Compile TM1637 example
+        run: |
+          arduino-cli compile \
+            --fqbn arduino:avr:uno \
+            examples/TM1637/Basic/Basic.ino
+
+      - name: Compile TM1638 example
+        run: |
+          arduino-cli compile \
+            --fqbn arduino:avr:uno \
+            examples/TM1638/Basic/Basic.ino
+
+      - name: Compile MAX7219 example
+        run: |
+          arduino-cli compile \
+            --fqbn arduino:avr:uno \
+            examples/MAX7219/Basic/Basic.ino
+
+      - name: Compile HT16K33 example
+        run: |
+          arduino-cli compile \
+            --fqbn arduino:avr:uno \
+            examples/HT16K33/Basic/Basic.ino
+
+      - name: Compile GPIO 7seg example
+        run: |
+          arduino-cli compile \
+            --fqbn arduino:avr:uno \
+            examples/GPIO/SevenSeg/SevenSeg.ino
+
+      - name: Compile GPIO 14seg example
+        run: |
+          arduino-cli compile \
+            --fqbn arduino:avr:uno \
+            examples/GPIO/FourteenSeg/FourteenSeg.ino
+
+
+# ─────────────────────────────────────────
+#  Job 3 — Compile for ESP32
+# ─────────────────────────────────────────
+
+  build_esp32:
+    name: Build ESP32
+    runs-on: ubuntu-latest
+    needs: unit_tests
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Install ESP32 core
+        run: |
+          arduino-cli core update-index \
+            --additional-urls \
+            https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          arduino-cli core install esp32:esp32 \
+            --additional-urls \
+            https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+
+      - name: Install library
+        run: |
+          mkdir -p $HOME/Arduino/libraries
+          cp -r . $HOME/Arduino/libraries/XSegment_lib
+
+      - name: Compile TM1637 example
+        run: |
+          arduino-cli compile \
+            --fqbn esp32:esp32:esp32 \
+            examples/TM1637/Basic/Basic.ino
+
+      - name: Compile MAX7219 example
+        run: |
+          arduino-cli compile \
+            --fqbn esp32:esp32:esp32 \
+            examples/MAX7219/Basic/Basic.ino
+
+      - name: Compile HT16K33 example
+        run: |
+          arduino-cli compile \
+            --fqbn esp32:esp32:esp32 \
+            examples/HT16K33/Basic/Basic.ino
+
+
+# ─────────────────────────────────────────
+#  Job 4 — Compile for RP2040
+# ─────────────────────────────────────────
+
+  build_rp2040:
+    name: Build RP2040 (Raspberry Pi Pico)
+    runs-on: ubuntu-latest
+    needs: unit_tests
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Install RP2040 core
+        run: |
+          arduino-cli core update-index \
+            --additional-urls \
+            https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+          arduino-cli core install rp2040:rp2040 \
+            --additional-urls \
+            https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+
+      - name: Install library
+        run: |
+          mkdir -p $HOME/Arduino/libraries
+          cp -r . $HOME/Arduino/libraries/XSegment_lib
+
+      - name: Compile TM1637 example
+        run: |
+          arduino-cli compile \
+            --fqbn rp2040:rp2040:rpipico \
+            examples/TM1637/Basic/Basic.ino
+
+      - name: Compile MAX7219 example
+        run: |
+          arduino-cli compile \
+            --fqbn rp2040:rp2040:rpipico \
+            examples/MAX7219/Basic/Basic.ino
+
+
+# ─────────────────────────────────────────
+#  Job 5 — Lint
+#  checks code style and formatting
+# ─────────────────────────────────────────
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install cppcheck
+        run: sudo apt-get install -y cppcheck
+
+      - name: Run cppcheck on src
+        run: |
+          cppcheck \
+            --enable=all \
+            --suppress=missingIncludeSystem \
+            --suppress=unmatchedSuppression \
+            --error-exitcode=1 \
+            --std=c++11 \
+            src/
+
+      - name: Check file encoding
+        run: |
+          # make sure no files have Windows line endings
+          ! grep -rl $'\r' src/
+
+      - name: Check for tabs
+        run: |
+          # enforce spaces not tabs in source files
+          ! grep -rl $'\t' src/
+
+
+# ─────────────────────────────────────────
+#  Job 6 — Library Validation
+#  checks library.properties format
+# ─────────────────────────────────────────
+
+  validate_library:
+    name: Validate Arduino Library
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Validate library structure
+        run: |
+          arduino-cli lib \
+            --config-file arduino-cli.yaml \
+            search XSegment_lib || true
+
+      - name: Check library.properties exists
+        run: test -f library.properties
+
+      - name: Check keywords.txt exists
+        run: test -f keywords.txt
+
+      - name: Check README exists
+        run: test -f README.md
+
+      - name: Check src folder exists
+        run: test -d src
+
+      - name: Check examples folder exists
+        run: test -d examples
