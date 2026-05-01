@@ -140,7 +140,7 @@ public:
     //  Show
     // ─────────────────────────────────────
 
-    void show(int n) override {
+    void show(int n) {
         show((int32_t)n);
     }
 
