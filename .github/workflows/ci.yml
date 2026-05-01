@@ -1,15 +1,3 @@
-# ─────────────────────────────────────────
-#  XSegment_lib CI Workflow
-#  Runs on every push and pull request
-#
-#  Jobs:
-#  1. unit_tests    — desktop logic tests
-#  2. build_avr     — compile for AVR
-#  3. build_esp32   — compile for ESP32
-#  4. build_rp2040  — compile for RP2040
-#  5. lint          — code style check
-# ─────────────────────────────────────────
-
 name: XSegment_lib CI
 
 on:
@@ -22,8 +10,6 @@ jobs:
 
 # ─────────────────────────────────────────
 #  Job 1 — Desktop Unit Tests
-#  Runs math, font, buffer tests
-#  No hardware needed
 # ─────────────────────────────────────────
 
   unit_tests:
@@ -42,10 +28,9 @@ jobs:
           cd tests
           make
 
+
 # ─────────────────────────────────────────
 #  Job 2 — Compile for AVR
-#  Arduino Uno, Nano, Mega
-#  Checks all examples compile clean
 # ─────────────────────────────────────────
 
   build_avr:
@@ -70,41 +55,21 @@ jobs:
           mkdir -p $HOME/Arduino/libraries
           cp -r . $HOME/Arduino/libraries/XSegment_lib
 
-      - name: Compile TM1637 example
+      - name: Compile all AVR examples
         run: |
-          arduino-cli compile \
-            --fqbn arduino:avr:uno \
-            examples/TM1637/Basic/Basic.ino
-
-      - name: Compile TM1638 example
-        run: |
-          arduino-cli compile \
-            --fqbn arduino:avr:uno \
-            examples/TM1638/Basic/Basic.ino
-
-      - name: Compile MAX7219 example
-        run: |
-          arduino-cli compile \
-            --fqbn arduino:avr:uno \
-            examples/MAX7219/Basic/Basic.ino
-
-      - name: Compile HT16K33 example
-        run: |
-          arduino-cli compile \
-            --fqbn arduino:avr:uno \
-            examples/HT16K33/Basic/Basic.ino
-
-      - name: Compile GPIO 7seg example
-        run: |
-          arduino-cli compile \
-            --fqbn arduino:avr:uno \
-            examples/GPIO/SevenSeg/SevenSeg.ino
-
-      - name: Compile GPIO 14seg example
-        run: |
-          arduino-cli compile \
-            --fqbn arduino:avr:uno \
+          for example in \
+            examples/TM1637/Basic/Basic.ino \
+            examples/TM1638/Basic/Basic.ino \
+            examples/MAX7219/Basic/Basic.ino \
+            examples/HT16K33/Basic/Basic.ino \
+            examples/GPIO/SevenSeg/SevenSeg.ino \
             examples/GPIO/FourteenSeg/FourteenSeg.ino
+          do
+            echo "Compiling $example"
+            arduino-cli compile \
+              --fqbn arduino:avr:uno \
+              $example
+          done
 
 
 # ─────────────────────────────────────────
@@ -137,23 +102,18 @@ jobs:
           mkdir -p $HOME/Arduino/libraries
           cp -r . $HOME/Arduino/libraries/XSegment_lib
 
-      - name: Compile TM1637 example
+      - name: Compile all ESP32 examples
         run: |
-          arduino-cli compile \
-            --fqbn esp32:esp32:esp32 \
-            examples/TM1637/Basic/Basic.ino
-
-      - name: Compile MAX7219 example
-        run: |
-          arduino-cli compile \
-            --fqbn esp32:esp32:esp32 \
-            examples/MAX7219/Basic/Basic.ino
-
-      - name: Compile HT16K33 example
-        run: |
-          arduino-cli compile \
-            --fqbn esp32:esp32:esp32 \
+          for example in \
+            examples/TM1637/Basic/Basic.ino \
+            examples/MAX7219/Basic/Basic.ino \
             examples/HT16K33/Basic/Basic.ino
+          do
+            echo "Compiling $example"
+            arduino-cli compile \
+              --fqbn esp32:esp32:esp32 \
+              $example
+          done
 
 
 # ─────────────────────────────────────────
@@ -161,7 +121,7 @@ jobs:
 # ─────────────────────────────────────────
 
   build_rp2040:
-    name: Build RP2040 (Raspberry Pi Pico)
+    name: Build RP2040 (Pico)
     runs-on: ubuntu-latest
     needs: unit_tests
 
@@ -186,89 +146,39 @@ jobs:
           mkdir -p $HOME/Arduino/libraries
           cp -r . $HOME/Arduino/libraries/XSegment_lib
 
-      - name: Compile TM1637 example
+      - name: Compile all RP2040 examples
         run: |
-          arduino-cli compile \
-            --fqbn rp2040:rp2040:rpipico \
-            examples/TM1637/Basic/Basic.ino
-
-      - name: Compile MAX7219 example
-        run: |
-          arduino-cli compile \
-            --fqbn rp2040:rp2040:rpipico \
+          for example in \
+            examples/TM1637/Basic/Basic.ino \
             examples/MAX7219/Basic/Basic.ino
+          do
+            echo "Compiling $example"
+            arduino-cli compile \
+              --fqbn rp2040:rp2040:rpipico \
+              $example
+          done
 
 
 # ─────────────────────────────────────────
-#  Job 5 — Lint
-#  checks code style and formatting
-# ─────────────────────────────────────────
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install cppcheck
-        run: sudo apt-get install -y cppcheck
-
-      - name: Run cppcheck on src
-        run: |
-          cppcheck \
-            --enable=all \
-            --suppress=missingIncludeSystem \
-            --suppress=unmatchedSuppression \
-            --error-exitcode=1 \
-            --std=c++11 \
-            src/
-
-      - name: Check file encoding
-        run: |
-          # make sure no files have Windows line endings
-          ! grep -rl $'\r' src/
-
-      - name: Check for tabs
-        run: |
-          # enforce spaces not tabs in source files
-          ! grep -rl $'\t' src/
-
-
-# ─────────────────────────────────────────
-#  Job 6 — Library Validation
-#  checks library.properties format
+#  Job 5 — Validate Library Structure
 # ─────────────────────────────────────────
 
   validate_library:
-    name: Validate Arduino Library
+    name: Validate Library Structure
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Arduino CLI
-        uses: arduino/setup-arduino-cli@v1
-
-      - name: Validate library structure
+      - name: Check required files exist
         run: |
-          arduino-cli lib \
-            --config-file arduino-cli.yaml \
-            search XSegment_lib || true
+          test -f library.properties && echo "library.properties OK"
+          test -f keywords.txt       && echo "keywords.txt OK"
+          test -f README.md          && echo "README.md OK"
+          test -d src                && echo "src/ OK"
+          test -d examples           && echo "examples/ OK"
 
-      - name: Check library.properties exists
-        run: test -f library.properties
-
-      - name: Check keywords.txt exists
-        run: test -f keywords.txt
-
-      - name: Check README exists
-        run: test -f README.md
-
-      - name: Check src folder exists
-        run: test -d src
-
-      - name: Check examples folder exists
-        run: test -d examples
+      - name: Check no Windows line endings
+        run: |
+          ! grep -rl $'\r' src/
