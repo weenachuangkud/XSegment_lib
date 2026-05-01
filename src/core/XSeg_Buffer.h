@@ -166,7 +166,7 @@ public:
     }
 
     void writeFloat(double n, uint8_t decimals, XSeg_Align align) {
-        writeFloat((float)n, decimals, align, padding);
+        writeFloat((float)n, decimals, align);
     }
 
 
