@@ -130,7 +130,7 @@ public:
     //  Float Formatting
     // ─────────────────────────────────────
 
-    void writeFloat(float n, uint8_t decimals, XSeg_Align align, XSeg_Padding padding) {
+    void writeFloat(float n, uint8_t decimals, XSeg_Align align) {
         clear();
 
         bool negative  = (n < 0);
@@ -165,7 +165,7 @@ public:
         _dirty = true;
     }
 
-    void writeFloat(double n, uint8_t decimals, XSeg_Align align, XSeg_Padding padding) {
+    void writeFloat(double n, uint8_t decimals, XSeg_Align align) {
         writeFloat((float)n, decimals, align, padding);
     }
 
