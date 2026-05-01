@@ -1,1 +1,21 @@
 .aider*
+
+# Build artifacts
+/test_XSeg_Math
+/test_XSeg_Font
+/test_XSeg_Buffer
+/tests/test_XSeg_Math
+/tests/test_XSeg_Font
+/tests/test_XSeg_Buffer
+*.o
+*.obj
+*.exe
+*.out
+*.dSYM/
+
+# Editor and temporary files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*~
