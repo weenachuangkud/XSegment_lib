@@ -69,7 +69,7 @@ public:
 
         // write digits right to left
         for (uint8_t i = 0; i < digitCount; i++) {
-            uint8_t pos  = startPos + digitCount - 1 - i;
+            uint8_t pos  = startPos + (negative ? 1 : 0) + digitCount - 1 - i;
             uint8_t d    = XSeg_Math::getDigitAt(val, i);
             _buffer[pos] = _getDigitMask(d);
         }
@@ -82,8 +82,8 @@ public:
         }
 
         // minus sign
-        if (negative && startPos > 0) {
-            _buffer[startPos - 1] = XSEG_MINUS;
+        if (negative) {
+            _buffer[startPos] = XSEG_MINUS;
         }
 
         _dirty = true;
@@ -103,7 +103,7 @@ public:
         uint8_t startPos   = _calcStartPos(digitCount + (negative ? 1 : 0), align);
 
         for (uint8_t i = 0; i < digitCount; i++) {
-            uint8_t pos  = startPos + digitCount - 1 - i;
+            uint8_t pos  = startPos + (negative ? 1 : 0) + digitCount - 1 - i;
             uint8_t d    = XSeg_Math::getDigitAt(val, i);
             _buffer[pos] = _getDigitMask(d);
         }
@@ -114,8 +114,8 @@ public:
             }
         }
 
-        if (negative && startPos > 0) {
-            _buffer[startPos - 1] = XSEG_MINUS;
+        if (negative) {
+            _buffer[startPos] = XSEG_MINUS;
         }
 
         _dirty = true;
@@ -148,7 +148,7 @@ public:
 
         // write all digits
         for (uint8_t i = 0; i < digitCount; i++) {
-            uint8_t pos  = startPos + digitCount - 1 - i;
+            uint8_t pos  = startPos + (negative ? 1 : 0) + digitCount - 1 - i;
             uint8_t d    = XSeg_Math::getDigitAt(scaled, i);
             _buffer[pos] = _getDigitMask(d);
 
@@ -158,8 +158,8 @@ public:
             }
         }
 
-        if (negative && startPos > 0) {
-            _buffer[startPos - 1] = XSEG_MINUS;
+        if (negative) {
+            _buffer[startPos] = XSEG_MINUS;
         }
 
         _dirty = true;
