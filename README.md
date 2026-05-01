@@ -207,13 +207,26 @@ display.setDigit(0, XSEG_A | XSEG_B | XSEG_C | XSEG_D | XSEG_E | XSEG_F);  // "A
 
 ---
 
-## Building
+## Building & Testing
 
 ```bash
 # Run unit tests
 cd tests
 make
+```
 
-# Build for Arduino
+### Build for Different Platforms
+
+```bash
+# Arduino AVR (Uno, Nano, Mega)
 arduino-cli compile --fqbn arduino:avr:uno examples/TM1637/Basic/Basic.ino
+
+# Arduino ESP32
+arduino-cli compile --fqbn esp32:esp32:esp32dev examples/TM1637/Basic/Basic.ino
+
+# Arduino STM32
+arduino-cli compile --fqbn STM32:stm32:GenF1 examples/TM1637/Basic/Basic.ino
+
+# Raspberry Pi Pico (RP2040)
+arduino-cli compile --fqbn rp2040:rp2040:rpipico examples/TM1637/Basic/Basic.ino
 ```
