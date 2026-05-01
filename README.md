@@ -78,27 +78,27 @@ void loop() {
 ### Initialization
 
 ```cpp
-void begin()    // Initialize hardware
-void clear()    // Clear display
-void update()   // Refresh display (call in loop)
+void begin();    // Initialize hardware
+void clear();    // Clear display
+void update();   // Refresh display (call in loop)
 ```
 
 ### Display Content
 
 ```cpp
-void show(int32_t n)      // Show integer
-void show(uint32_t n)     // Show unsigned integer
-void show(float n, 2)    // Show float (specify decimals)
-void show("text")        // Show string
+void show(int32_t n);      // Show integer
+void show(uint32_t n);     // Show unsigned integer
+void show(float n, 2);    // Show float (specify decimals)
+void show("text");        // Show string
 ```
 
 ### Configuration
 
 ```cpp
-void setBrightness(7)    // 0-7 (or 0-15 for MAX7219/HT16K33)
-void setAlignment(XSEG_ALIGN_RIGHT)   // RIGHT, LEFT, CENTER
-void setPadding(XSEG_PAD_SPACE)        // SPACE or ZERO
-void setBlink(XSEG_BLINK_MEDIUM)       // OFF, SLOW, MEDIUM, FAST
+void setBrightness(7);    // 0-7 (or 0-15 for MAX7219/HT16K33)
+void setAlignment(XSEG_ALIGN_RIGHT);   // RIGHT, LEFT, CENTER
+void setPadding(XSEG_PAD_SPACE);        // SPACE or ZERO
+void setBlink(XSEG_BLINK_MEDIUM);       // OFF, SLOW, MEDIUM, FAST
 ```
 
 ---
