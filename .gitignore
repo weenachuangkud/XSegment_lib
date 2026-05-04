@@ -1,12 +1,7 @@
 .aider*
 
 # Build artifacts
-/test_XSeg_Math
-/test_XSeg_Font
-/test_XSeg_Buffer
-/tests/test_XSeg_Math
-/tests/test_XSeg_Font
-/tests/test_XSeg_Buffer
+/tests_ci/test_XSeg_Font
 /tests_ci/test_XSeg_Math
 /tests_ci/test_XSeg_Buffer
 .pio/
